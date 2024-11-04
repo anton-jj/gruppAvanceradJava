@@ -17,6 +17,7 @@ public class MyArrayList<T> {
         }
         data[size++] = size;
     }
+
     public void remove(int index) {
         if (index < 0 || index >= size){
             System.out.println("invalid index");
@@ -40,6 +41,7 @@ public class MyArrayList<T> {
         }
         size = 0;
     }
+
     public int size(){
         return size;
     }

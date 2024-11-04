@@ -1,12 +1,15 @@
 package org.example;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
-    public static void main(String[] args) throws ClassNotFoundException, NoSuchMethodException {
+
+    public static void main(String[] args) throws ClassNotFoundException, NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+
         UserService userService = new UserService();
         List<User> users = new ArrayList<>();
 
@@ -36,6 +39,7 @@ public class Main {
         for (int i = 0; i < myarr.size(); i++) {
             System.out.println(myarr.get(i));
         }
+
         System.out.println("------------");
         myarr.clear();
         System.out.println(myarr.size());
@@ -56,8 +60,22 @@ public class Main {
 
             System.out.println("Resultat av add-metod: " + result);
 
-        }catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
+        }
+
+        //Övning 4
+        AutoCallTest act = new AutoCallTest();
+        printAutoCall(act);
+    }
+
+    public static <T> void printAutoCall(T value) throws InvocationTargetException, IllegalAccessException {
+        Method[] methods = value.getClass().getMethods();
+        for (Method method : methods) {
+            if (method.isAnnotationPresent(AutoCall.class)) {
+                method.setAccessible(true);
+                method.invoke(value);
+            }
         }
     }
 }

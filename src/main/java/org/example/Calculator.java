@@ -5,11 +5,9 @@ public class Calculator {
 
     private Calculator(int number) {
         this.number = number;
-
     }
 
     private int add(int other) {
         return this.number + other;
-
     }
 }
