@@ -1,9 +1,12 @@
 package org.example;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ClassNotFoundException, NoSuchMethodException {
         UserService userService = new UserService();
         List<User> users = new ArrayList<>();
 
@@ -17,6 +20,7 @@ public class Main {
         for (UserDTO u : newList) {
             System.out.println(u.getUsername());
         }
+
         //övning 2
         MyArrayList myarr = new MyArrayList();
         myarr.add(1);
@@ -26,6 +30,7 @@ public class Main {
         for (int i = 0; i < myarr.size(); i++) {
             System.out.println(myarr.get(i));
         }
+
         System.out.println("------------");
         myarr.remove(1);
         for (int i = 0; i < myarr.size(); i++) {
@@ -35,7 +40,24 @@ public class Main {
         myarr.clear();
         System.out.println(myarr.size());
 
+        //övning 3
+        try {
+            Class<?> clazz = Class.forName("org.example.Calculator");
 
+            Constructor<?> constructor = clazz.getDeclaredConstructor(int.class);
+            constructor.setAccessible(true);
+
+            Object calc = constructor.newInstance(3);
+
+            Method addNumber = clazz.getDeclaredMethod("add", int.class);
+            addNumber.setAccessible(true);
+
+            int result = (int) addNumber.invoke(calc, 1);
+
+            System.out.println("Resultat av add-metod: " + result);
+
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
     }
-
 }
