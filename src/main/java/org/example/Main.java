@@ -17,6 +17,25 @@ public class Main {
         for (UserDTO u : newList) {
             System.out.println(u.getUsername());
         }
+        //övning 2
+        MyArrayList myarr = new MyArrayList();
+        myarr.add(1);
+        myarr.add(2);
+        myarr.add(3);
+
+        for (int i = 0; i < myarr.size(); i++) {
+            System.out.println(myarr.get(i));
+        }
+        System.out.println("------------");
+        myarr.remove(1);
+        for (int i = 0; i < myarr.size(); i++) {
+            System.out.println(myarr.get(i));
+        }
+        System.out.println("------------");
+        myarr.clear();
+        System.out.println(myarr.size());
+
+
     }
 
 }
