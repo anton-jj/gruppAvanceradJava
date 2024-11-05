@@ -15,17 +15,18 @@ public class MyArrayList<T> {
         if (size == data.length){
             data = Arrays.copyOf(data, data.length  * 2);
         }
-        data[size++] = size;
+        data[size++] = some;
+
     }
 
     public void remove(int index) {
         if (index < 0 || index >= size){
             System.out.println("invalid index");
         }
-        for(int i  = 0; i < size-1; i++){
+        for(int i  = index; i < size -1; i++){
             data[i] = data[i + 1];
         }
-        data[size--] = 0;
+        size --;
     }
 
     public T get(int index) {

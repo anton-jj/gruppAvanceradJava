@@ -25,24 +25,30 @@ public class Main {
         }
 
         //övning 2
-        MyArrayList myarr = new MyArrayList();
-        myarr.add(1);
-        myarr.add(2);
+        MyArrayList<Integer> myarr = new MyArrayList();
+        MyArrayList<String> stringMyArrayList = new MyArrayList<>();
+        stringMyArrayList.add("hello");
+        stringMyArrayList.add("world");
+        stringMyArrayList.remove(2);
+       for (int i = 0; i < stringMyArrayList.size(); i++){
+           System.out.println(stringMyArrayList.get(i));
+       }
         myarr.add(3);
+        myarr.add(6);
+        myarr.add(12);
+        myarr.add(24);
+        myarr.add(30);
+        myarr.add(36);
+        myarr.add(42);
+        myarr.remove(4);
 
+        System.out.println("------------");
         for (int i = 0; i < myarr.size(); i++) {
             System.out.println(myarr.get(i));
         }
-
         System.out.println("------------");
-        myarr.remove(1);
-        for (int i = 0; i < myarr.size(); i++) {
-            System.out.println(myarr.get(i));
-        }
 
-        System.out.println("------------");
-        myarr.clear();
-        System.out.println(myarr.size());
+
 
         //övning 3
         try {
